@@ -1,0 +1,34 @@
+diff -r 70fe96e8ec6a src/spectrum/model/half-duplex-ideal-phy.cc
+--- a/src/spectrum/model/half-duplex-ideal-phy.cc	Wed Dec 20 21:28:42 2017 +0100
++++ b/src/spectrum/model/half-duplex-ideal-phy.cc	Thu Dec 21 18:01:28 2017 +0300
+@@ -459,6 +459,17 @@
+   m_rxPsd = 0;
+ }
+ 
++void
++HalfDuplexIdealPhy::SetErrorModel (Ptr<SpectrumErrorModel> m)
++{
++  m_interference.SetErrorModel (m);
++}
++
++SpectrumInterference &
++HalfDuplexIdealPhy::GetInterference ()
++{
++  return m_interference;
++}
+ 
+ 
+ } // namespace ns3
+diff -r 70fe96e8ec6a src/spectrum/model/half-duplex-ideal-phy.h
+--- a/src/spectrum/model/half-duplex-ideal-phy.h	Wed Dec 20 21:28:42 2017 +0100
++++ b/src/spectrum/model/half-duplex-ideal-phy.h	Thu Dec 21 18:01:28 2017 +0300
+@@ -189,6 +189,9 @@
+    */
+   void SetAntenna (Ptr<AntennaModel> a);
+ 
++  void SetErrorModel (Ptr<SpectrumErrorModel> m);
++  SpectrumInterference & GetInterference ();
++
+ private:
+   virtual void DoDispose (void);
+ 

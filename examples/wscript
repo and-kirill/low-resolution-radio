@@ -1,0 +1,29 @@
+## -*- Mode: python; py-indent-offset: 4; indent-tabs-mode: nil; coding: utf-8; -*-
+
+def build(bld):
+    deps = [
+          'low-resolution-radio',
+          'internet-apps',
+          'applications',
+          'olsr',
+          'wifi',
+          'flow-monitor',
+          ]
+
+    obj = bld.create_ns3_program('lrr-first', deps)
+    obj.source = [
+    	'first.cc',
+    	]
+    obj = bld.create_ns3_program('lrr-second', deps)
+    obj.source = [
+    	'second.cc',
+    	]
+    obj = bld.create_ns3_program('lrr-wifi-comparison', deps)
+    obj.source = [
+        'wifi-comparison.cc',
+        ]
+    obj = bld.create_ns3_program('lrr-video', deps)
+    obj.source = [
+        'video-example.cc',
+        'video-application.cc',
+        ]
