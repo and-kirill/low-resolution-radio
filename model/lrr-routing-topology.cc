@@ -205,7 +205,7 @@ GlobalTopology::Print (std::ostream & os)
         }
 
     }
-  os << "};\n";
+  os << "}\n";
 }
 
 bool
